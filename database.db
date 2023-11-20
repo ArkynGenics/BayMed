@@ -5,4 +5,19 @@ CREATE TABLE `users` (
   password varchar(64) NOT NULL,
   PRIMARY KEY(id)
 );
-INSERT INTO `users` (`username`, `email`, `password`) VALUES ('admin', 'admin@email.com', SHA2('password', 256));
+
+CREATE TABLE medicines (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    description TEXT,
+    quantity INT NOT NULL
+);
+
+INSERT INTO medicines (name, price, description, quantity)
+VALUES
+    ('Aspirin', 5.99, 'Pain reliever and fever reducer', 100),
+    ('Amoxicillin', 12.50, 'Antibiotic for bacterial infections', 50),
+    ('Lipitor', 25.75, 'Cholesterol-lowering medication', 75),
+    ('Ibuprofen', 8.49, 'Nonsteroidal anti-inflammatory drug', 120),
+    ('Ciprofloxacin', 18.30, 'Broad-spectrum antibiotic', 60);

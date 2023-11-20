@@ -2,7 +2,7 @@
     $config = [
         'server' => 'localhost',
         'username' => 'root',
-        'password' => 'dazedkraken',
+        'password' => '',
         'database' => 'baymed',
     ];
 ?>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Medical Website Login</title>
+    <title>Medical Website Register</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -58,12 +58,14 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>BAYMED LOGIN PAGE</h2>
-        <form action="controllers/AuthController.php" method="POST">
+        <h2>BAYMED REGISTRATION PAGE</h2>
+        <form action="controllers/RegistrationController.php" method="POST">
             <input type="text" name="username" placeholder="Username" required>
+            <input type="text" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+            <button type="submit">Register</button>
         </form>
+        <p style="color: green;"><?php if(isset($_SESSION['success_message'])){ echo $_SESSION['success_message'];unset($_SESSION['success_message']);}?></p>
         <p style="color: red;"><?php if(isset($_SESSION['error_message'])){ echo $_SESSION['error_message'];unset($_SESSION['error_message']);}?></p>
     </div>
 </body>
