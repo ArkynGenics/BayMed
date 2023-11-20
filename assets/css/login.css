@@ -1,0 +1,183 @@
+.login,
+.login * {
+  box-sizing: border-box;
+}
+.login {
+  background: #ffffff;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+}
+.seamless-pattern-medical-icons-white-background-vector-illustration-53722583-1 {
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.logo {
+  position: absolute;
+  inset: 0;
+}
+.login2 {
+  color: var(--dark, #000000);
+  text-align: left;
+  font: 400 50px "Poppins-Regular", sans-serif;
+  position: absolute;
+  left: 893px;
+  top: 259px;
+}
+.group-99 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-1 {
+  background: rgba(217, 217, 217, 0.72);
+  border-radius: 13px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 681px;
+  height: 63px;
+  position: absolute;
+  left: 619px;
+  top: 411px;
+}
+.username {
+  color: #000000;
+  text-align: left;
+  font: 400 30px "Poppins-Regular", sans-serif;
+  position: absolute;
+  left: 619px;
+  top: 356px;
+}
+.rectangle-2 {
+  background: rgba(155, 228, 208, 0.72);
+  border-radius: 13px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 681px;
+  height: 63px;
+  position: absolute;
+  left: 619px;
+  top: 411px;
+}
+.group-100 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-12 {
+  background: rgba(217, 217, 217, 0.72);
+  border-radius: 13px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 681px;
+  height: 63px;
+  position: absolute;
+  left: 619px;
+  top: 566px;
+}
+.password {
+  color: #000000;
+  text-align: left;
+  font: 400 30px "Poppins-Regular", sans-serif;
+  position: absolute;
+  left: 619px;
+  top: 511px;
+}
+.rectangle-22 {
+  background: rgba(155, 228, 208, 0.72);
+  border-radius: 13px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 681px;
+  height: 63px;
+  position: absolute;
+  left: 619px;
+  top: 566px;
+}
+.haven-t-registered-register-here {
+  text-align: left;
+  font: 400 29px "Poppins-Regular", sans-serif;
+  position: absolute;
+  left: 717px;
+  top: 777px;
+}
+.haven-t-registered-register-here-span {
+  color: #000000;
+  font: 400 29px "Poppins-Regular", sans-serif;
+}
+.haven-t-registered-register-here-span2 {
+  color: #00b3ff;
+  font: 400 29px "Poppins-Regular", sans-serif;
+  text-decoration: underline;
+}
+.rectangle-23 {
+  border-radius: 0px;
+  width: 286px;
+  height: 82px;
+  position: absolute;
+  left: 817px;
+  top: 666px;
+  overflow: visible;
+}
+.login3 {
+  color: #ffffff;
+  text-align: center;
+  font: 400 32px "Poppins-Regular", sans-serif;
+  position: absolute;
+  left: 843px;
+  top: 666px;
+  width: 233px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rectangle-6 {
+  background: #4cc9b0;
+  width: 1920px;
+  height: 105px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.home {
+  color: #000000;
+  text-align: center;
+  font: 400 30px "Inter-Regular", sans-serif;
+  position: absolute;
+  left: calc(50% - 732px);
+  top: 38px;
+  width: 155px;
+}
+.medicine {
+  color: #000000;
+  text-align: center;
+  font: 400 30px "Inter-Regular", sans-serif;
+  position: absolute;
+  left: calc(50% - -312px);
+  top: 38px;
+  width: 155px;
+}
+.about-us {
+  color: #000000;
+  text-align: center;
+  font: 400 30px "Inter-Regular", sans-serif;
+  position: absolute;
+  left: calc(50% - -556px);
+  top: 38px;
+  width: 155px;
+}
+.rectangle-20 {
+  background: rgba(217, 217, 217, 0);
+  width: 132px;
+  height: 55px;
+  position: absolute;
+  left: 251px;
+  top: 32px;
+}
