@@ -1,9 +1,3 @@
-<?php 
-    session_start();
-    include "config/connection.php";
-    include "models/MedicineModel.php";
-    $medicineModel = new MedicineModel($conn);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,17 +66,15 @@
     <h1>Medicine List</h1>
 </header>
     <nav>
-        <a href="home.php" class="active">Home</a>
-        <a href="medicines.php">Medicines</a>
-        <a href="cart.php">Cart</a>
-        <a href="logout.php">Logout</a>
+        <a href="home" class="active">Home</a>
+        <a href="medicines">Medicines</a>
+        <a href="cart">Cart</a>
+        <a href="logout">Logout</a>
         <div style="float: right; padding: 14px 16px;">
             Welcome, <span id="username"><?php echo $_SESSION['username'];?></span>
         </div>
     </nav>
     <?php 
-
-    $result = $medicineModel->listMedicine();
     echo '<div class="medicine-container">';
     while ($row = $result->fetch_assoc()) {
         $id = $row['id'];
@@ -102,7 +94,7 @@
     ?>
     <script>
         function showDetails(id) {
-            window.location.href = `medicine.php?id=${id}`
+            window.location.href = `medicine?id=${id}`
         }
     </script>
 </body>

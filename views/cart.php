@@ -1,11 +1,3 @@
-<?php
-    include_once 'models/CartModel.php';
-    include_once 'config/connection.php';
-    session_start();
-    if(!isset($_SESSION['user_id'])){
-        header("Location: login.php");
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

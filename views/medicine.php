@@ -1,9 +1,3 @@
-<?php 
-    include "models/MedicineModel.php";
-    include "config/connection.php";
-    $medicineModel = new MedicineModel($conn);
-    $medicine = $medicineModel->getMedicine($_GET['id']);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
