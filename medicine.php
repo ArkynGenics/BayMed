@@ -1,4 +1,6 @@
-<?php include "controllers/ViewMedicine.php"?>
+<?php include "controllers/MedicineController.php";
+$medicine = getMedicine($_GET['id']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,6 +57,7 @@
             font-size: 16px;
             color: #666;
         }
+        
     </style>
 </head>
 <body>

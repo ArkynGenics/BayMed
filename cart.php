@@ -77,27 +77,29 @@ session_start();
             </tr>
         </thead>
         <tbody>
-            <!-- Dummy data, replace with dynamic data from your database -->
-            <tr>
-                <td>1</td>
-                <td>Medicine A</td>
-                <td>$10.00</td>
-                <td>2</td>
-                <td>$20.00</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Medicine B</td>
-                <td>$15.00</td>
-                <td>3</td>
-                <td>$45.00</td>
-            </tr>
-            <!-- Add more rows as needed -->
+            <?php
+            include_once 'controllers/CartController.php';
+            $result = listCart($_SESSION['user_id']);
+            $rowNumber = 0; 
+            $cartPrice = 0;
+            while ($row = $result->fetch_assoc()) {
+                $rowNumber++;
+                echo '<tr>';
+                echo '<td>' . $rowNumber. '</td>';
+                echo '<td>' . $row['medicine_name'] . '</td>';
+                echo '<td>$' . number_format($row['medicine_price'], 2) . '</td>';
+                echo '<td>' . $row['quantity'] . '</td>';
+                echo '<td>$' . number_format($row['total_price'], 2) . '</td>';
+                echo '</tr>';
+                $cartPrice += $row['total_price'];
+            }
+
+            ?>
         </tbody>
     </table>
 
     <div class="total">
-        <p><strong>Total:</strong> $65.00</p>
+        <p><strong>Total:</strong>$<?php echo number_format($cartPrice, 2)?> </p>
     </div>
 </div>
 

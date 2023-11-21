@@ -24,15 +24,16 @@ session_start();
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
-            max-width: 900px; /* Set a maximum width for the container */
+            max-width: 1208px; /* Set a maximum width for the container */
             margin: 0 auto; /* Center the container */
+            padding-top: 50px;
         }
 
         .medicine-box {
             border: 1px solid #ddd;
             padding: 15px;
             margin: 10px;
-            width: 260px; /* Set a fixed width for each medicine box */
+            width: 20%; /* Set a fixed width for each medicine box */
             text-align: center;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -70,7 +71,25 @@ session_start();
             Welcome, <span id="username"><?php echo $_SESSION['username'];?></span>
         </div>
     </nav>
-    <?php include "controllers/MedicineList.php" ?>
+    <?php include "controllers/MedicineController.php";
+    $result = listMedicine();
+    echo '<div class="medicine-container">';
+    while ($row = $result->fetch_assoc()) {
+        $id = $row['id'];
+        $name = $row['name'];
+        $price = $row['price'];
+        $quantity = $row['quantity'];
+        echo '<div class="medicine-box" onclick="showDetails(' . $id . ')">';
+        echo '<img src="storage/image/panadol.png" alt="Medicine Image" style="max-width: 100%; height: auto;">';
+        echo '<h3>' . $name . '</h3>';
+        echo '<p>Price: $' . number_format($price, 2) . '</p>';
+        echo '<p>Quantity: ' . $quantity . '</p>';
+        echo '<button onclick="addToCart(' . $id . ', \'' . $name . '\', ' . $price . ')">Add to Cart</button>';
+        echo '</div>';
+    }
+    echo '</div>';
+
+    ?>
     <script>
         function showDetails(id) {
             window.location.href = `medicine.php?id=${id}`
