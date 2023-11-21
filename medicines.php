@@ -1,21 +1,20 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/navbar.css">
     <title>Medicine List</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
         }
-
         h2 {
             text-align: center;
             color: #333;
@@ -59,6 +58,18 @@
     </style>
 </head>
 <body>
+<header>
+    <h1>Medicine List</h1>
+</header>
+    <nav>
+        <a href="home.php" class="active">Home</a>
+        <a href="medicines.php">Medicines</a>
+        <a href="cart.php">Cart</a>
+        <a href="logout.php">Logout</a>
+        <div style="float: right; padding: 14px 16px;">
+            Welcome, <span id="username"><?php echo $_SESSION['username'];?></span>
+        </div>
+    </nav>
     <?php include "controllers/MedicineList.php" ?>
     <script>
         function showDetails(id) {

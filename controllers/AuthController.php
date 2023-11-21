@@ -11,6 +11,8 @@
         $user = $result->fetch_assoc();
         if ($user && password_verify($password,$user['password'])) {
             $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['privilege'] = $user['privilege'];
             $_SESSION["success_message"] = "Login Success";
             header("Location: ../home.php");
         } else {

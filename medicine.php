@@ -60,7 +60,7 @@
 <body>
 
     <div class="medicine-container">
-        <img class="medicine-image" src="medicine_image.jpg" alt="Medicine Image">
+        <img class="medicine-image" src="storage/image/panadol.png" alt="Medicine Image">
         <div class="medicine-name"><?php echo $medicine['name']; ?></div>
         <div class="medicine-price"><?php echo $medicine['price']; ?></div>
         <div class="medicine-quantity">Quantity: <?php echo $medicine['quantity']; ?></div>

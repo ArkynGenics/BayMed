@@ -1,10 +1,13 @@
 <?php 
     session_start();
+    if(isset($_SESSION['user_id'])){
+        header("Location: home.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Medical Website Login</title>
+    <title>BayMed Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
