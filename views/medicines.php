@@ -82,8 +82,8 @@
         $price = $row['price'];
         $quantity = $row['quantity'];
         $image = $row['file_path'];
-        echo '<div class="medicine-box">';
-        echo '<img src="'. $image .'" alt="Medicine Image" onclick="showDetails(' . $id . ')" style="max-width: 100%; height: auto;">';
+        echo '<div class="medicine-box" onclick="showDetails(' . $id . ')">';
+        echo '<img src="'. $image .'" alt="Medicine Image" style="max-width: 100%; height: auto;">';
         echo '<h3>' . $name . '</h3>';
         echo '<p>Price: $' . number_format($price, 2) . '</p>';
         echo '<p>Quantity: ' . $quantity . '</p>';
