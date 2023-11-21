@@ -7,7 +7,7 @@ class MedicineModel {
         $this->conn = $conn;
     }
     public function listMedicine(){
-        $sql = "SELECT id,name, price, quantity FROM medicines";
+        $sql = "SELECT id,name, price, quantity,file_path FROM medicines";
         $result = $this->conn->query($sql);
         if ($result) {
             return $result;
