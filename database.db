@@ -16,7 +16,8 @@ CREATE TABLE medicines (
     name VARCHAR(255) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     description TEXT,
-    quantity INT NOT NULL
+    quantity INT NOT NULL,
+    file_path VARCHAR(255)
 );
 
 CREATE TABLE carts (
@@ -28,11 +29,17 @@ CREATE TABLE carts (
     FOREIGN KEY (medicine_id) REFERENCES medicines(id)
 );
 
+CREATE TABLE feedbacks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fullname varchar(255) NOT NULL,
+    user_feedback TEXT NOT NULl,
+    file_path VARCHAR(255)
+);
 INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 1, 3);
 INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 2, 2);
 INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 3, 1);
 INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 4, 4);
-INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 5, 2);
+INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 5, 2);`
 
 INSERT INTO medicines (name, price, description, quantity)
 VALUES

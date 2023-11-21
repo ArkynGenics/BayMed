@@ -73,10 +73,27 @@
                 <th>Total</th>
             </tr>
         </thead>
+        <script>
+        function deleteForm(id) {
+            var form = document.createElement("form");
+            form.method = "post"; 
+            form.action = "";  
+            var actionInput = document.createElement("input");
+            actionInput.type = "hidden";
+            actionInput.name = "action";  
+            actionInput.value = "delete_cart";
+            var idInput = document.createElement("input");
+            idInput.type = "hidden";
+            idInput.name = "id"; 
+            idInput.value = id;
+            form.appendChild(actionInput);
+            form.appendChild(idInput);
+            document.body.appendChild(form);
+            form.submit();
+        }
+        </script>
         <tbody>
             <?php
-            $cart = new CartModel($conn);
-            $result = $cart->listCart($_SESSION['user_id']);
             $rowNumber = 0; 
             $cartPrice = 0;
             while ($row = $result->fetch_assoc()) {
@@ -87,6 +104,7 @@
                 echo '<td>$' . number_format($row['medicine_price'], 2) . '</td>';
                 echo '<td>' . $row['quantity'] . '</td>';
                 echo '<td>$' . number_format($row['total_price'], 2) . '</td>';
+                echo '<td><a href="#" onclick="deleteForm('. $row['cart_id'].');">Delete</a></td>';
                 echo '</tr>';
                 $cartPrice += $row['total_price'];
             }
@@ -99,6 +117,8 @@
         <p><strong>Total:</strong>$<?php echo number_format($cartPrice, 2)?> </p>
     </div>
 </div>
+<p style="color: green;"><?php if(isset($_SESSION['success_message'])){echo $_SESSION['success_message'];unset($_SESSION['success_message']);}?></p>
+<p style="color: red;"><?php if(isset($_SESSION['error_message'])){echo $_SESSION['error_message']; unset($_SESSION['error_message']);}?></p>
 
 </body>
 </html>

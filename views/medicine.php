@@ -58,7 +58,8 @@
     </style>
 </head>
 <body>
-    
+    <p style="color: green;"><?php if(isset($_SESSION['success_message'])){echo $_SESSION['success_message'];unset($_SESSION['success_message']);}?></p>
+    <p style="color: red;"><?php if(isset($_SESSION['error_message'])){echo $_SESSION['error_message']; unset($_SESSION['error_message']);}?></p>
     <div class="medicine-container">
         <img class="medicine-image" src="storage/image/panadol.png" alt="Medicine Image">
         <div class="medicine-name"><?php echo $medicine['name']; ?></div>
@@ -66,8 +67,14 @@
         <div class="medicine-quantity">Quantity: <?php echo $medicine['quantity']; ?></div>
         <div class="medicine-description">
         <?php echo $medicine['description']; ?>
+        <form action=# method="POST">
+            <label for="quantity">Quantity:</label>
+            <input type="hidden" name="medicine_id" value="<?php echo $medicine['id']?>"/>
+            <input type="hidden" name="action" value="add_to_cart"/>
+            <input type="number" id="quantity" name="quantity" min="1">
+            <button type="submit">Add to Cart</button>
+        </form>
         </div>
     </div>
-
 </body>
 </html>

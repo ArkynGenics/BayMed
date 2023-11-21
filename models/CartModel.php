@@ -20,10 +20,27 @@ class CartModel {
             return $result;
         }
     }
-
+    public function viewCart($cart_id) {
+        $sql = "SELECT * from carts where id = ?;";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('i', $cart_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result) {
+            return $result->fetch_assoc();
+        }else{
+            return [];
+        }
+    }
     public function addToCart($id, $user_id, $quantity) {
         $stmt = $this->conn->prepare("INSERT INTO carts (medicine_id, user_id, quantity) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE quantity = quantity + ?");
         $stmt->bind_param('iiii', $id, $user_id,$quantity,$quantity);
+        $success = $stmt->execute();
+        return $success;
+    }
+    public function deleteFromCart($id) {
+        $stmt = $this->conn->prepare("DELETE FROM carts where id = ?");
+        $stmt->bind_param('i', $id);
         $success = $stmt->execute();
         return $success;
     }

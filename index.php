@@ -34,7 +34,11 @@ switch ($path) {
     case $basePath . '/cart':
         include_once 'controllers/CartController.php'; 
         CartController::index();
-        break;           
+        break;      
+    case $basePath . '/feedback':
+        include_once 'controllers/FeedbackController.php'; 
+        FeedbackController::index();
+        break;                
     default:
         // Handle 404
         http_response_code(404);
