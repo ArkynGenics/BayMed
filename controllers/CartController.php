@@ -15,7 +15,7 @@
             return $result;
         }
     }
-    function getMedicine($id){
+    function addToCart($id){
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM medicines where id = ?");
         $stmt->bind_param('i',$id);
