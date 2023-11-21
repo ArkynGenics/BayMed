@@ -1,5 +1,10 @@
 <?php
-session_start();
+    include_once 'models/CartModel.php';
+    include_once 'config/connection.php';
+    session_start();
+    if(!isset($_SESSION['user_id'])){
+        header("Location: login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,8 +83,8 @@ session_start();
         </thead>
         <tbody>
             <?php
-            include_once 'controllers/CartController.php';
-            $result = listCart($_SESSION['user_id']);
+            $cart = new CartModel($conn);
+            $result = $cart->listCart($_SESSION['user_id']);
             $rowNumber = 0; 
             $cartPrice = 0;
             while ($row = $result->fetch_assoc()) {

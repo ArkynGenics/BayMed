@@ -1,5 +1,8 @@
-<?php include "controllers/MedicineController.php";
-$medicine = getMedicine($_GET['id']);
+<?php 
+    include "models/MedicineModel.php";
+    include "config/connection.php";
+    $medicineModel = new MedicineModel($conn);
+    $medicine = $medicineModel->getMedicine($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +64,7 @@ $medicine = getMedicine($_GET['id']);
     </style>
 </head>
 <body>
-
+    
     <div class="medicine-container">
         <img class="medicine-image" src="storage/image/panadol.png" alt="Medicine Image">
         <div class="medicine-name"><?php echo $medicine['name']; ?></div>

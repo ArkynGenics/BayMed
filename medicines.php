@@ -1,5 +1,8 @@
 <?php 
-session_start();
+    session_start();
+    include "config/connection.php";
+    include "models/MedicineModel.php";
+    $medicineModel = new MedicineModel($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +12,12 @@ session_start();
     <link rel="stylesheet" href="assets/css/navbar.css">
     <title>Medicine List</title>
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
         header {
             background-color: #333;
             color: #fff;
@@ -71,8 +80,9 @@ session_start();
             Welcome, <span id="username"><?php echo $_SESSION['username'];?></span>
         </div>
     </nav>
-    <?php include "controllers/MedicineController.php";
-    $result = listMedicine();
+    <?php 
+
+    $result = $medicineModel->listMedicine();
     echo '<div class="medicine-container">';
     while ($row = $result->fetch_assoc()) {
         $id = $row['id'];
