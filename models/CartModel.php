@@ -21,19 +21,11 @@ class CartModel {
         }
     }
 
-    public function addToCart($id, $quantity) {
-        $stmt = $this->conn->prepare("SELECT * FROM medicines where id = ?");
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $medicine = $result->fetch_assoc();
-
-        // Insert or update the cart based on the medicine availability
-        $stmt = $this->conn->prepare("INSERT INTO carts (user_id, medicine_id, quantity) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE quantity = quantity + ?");
-        $stmt->bind_param('iiii', $_SESSION['user_id'], $id, $quantity, $quantity);
-        $stmt->execute();
-        $stmt->close();
-        return $medicine;
+    public function addToCart($id, $user_id, $quantity) {
+        $stmt = $this->conn->prepare("INSERT INTO carts (medicine_id, user_id, quantity) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE quantity = quantity + ?");
+        $stmt->bind_param('iiii', $id, $user_id,$quantity,$quantity);
+        $success = $stmt->execute();
+        return $success;
     }
 }
 
