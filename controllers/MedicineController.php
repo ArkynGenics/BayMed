@@ -3,6 +3,9 @@
 class MedicineController {
     public static function viewAll() {
         session_start();
+        if(!isset($_SESSION['user_id'])){
+            header("Location: login");
+        }
         include "config/connection.php";
         include "models/MedicineModel.php";
         $medicineModel = new MedicineModel($conn);
@@ -11,6 +14,9 @@ class MedicineController {
     }
     public static function viewMedicine() {
         session_start();
+        if(!isset($_SESSION['user_id'])){
+            header("Location: login");
+        }
         include "config/connection.php";
         include_once 'function/anticsrf.php';
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {

@@ -90,8 +90,6 @@
         <a href="cart">Cart</a>
         <a href="feedback">Feedback</a>
     </nav>
-    <p style="color: green;"><?php if(isset($_SESSION['success_message'])){echo $_SESSION['success_message'];unset($_SESSION['success_message']);}?></p>
-    <p style="color: red;"><?php if(isset($_SESSION['error_message'])){echo $_SESSION['error_message']; unset($_SESSION['error_message']);}?></p>
     <div class="content">
         <div class="medicine-container">
             <div class="back-button" onclick="window.location.href='./medicines'">Back</div>
@@ -112,6 +110,8 @@
                 <br><br>
                 <button class="addToCart-button">Add to Cart</button>
             </form>
+            <p style="color: green;"><?php if(isset($_SESSION['success_message'])){echo $_SESSION['success_message'];unset($_SESSION['success_message']);}?></p>
+    <p style="color: red;"><?php if(isset($_SESSION['error_message'])){echo $_SESSION['error_message']; unset($_SESSION['error_message']);}?></p>
             </div>
         </div>
     </div>
