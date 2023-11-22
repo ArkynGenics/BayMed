@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/med.css">
     <title>Medicine List</title>
     <style>
         body {
@@ -12,15 +13,17 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         header {
-            background-color: #333;
+            background-color: #4CC9B0;
             color: #fff;
             padding: 15px;
             text-align: center;
         }
+
         h2 {
             text-align: center;
-            color: #333;
+            color: #4CC9B0;
         }
 
         .medicine-container {
@@ -38,7 +41,6 @@
             margin: 10px;
             width: 20%; /* Set a fixed width for each medicine box */
             text-align: center;
-            cursor: pointer;
             transition: background-color 0.3s;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -47,12 +49,13 @@
 
         .medicine-box:hover {
             background-color: #f9f9f9;
+            cursor:pointer
         }
 
         h3 {
             margin-top: 0;
             font-size: 1.5em;
-            color: #3498db;
+            color: #4CC9B0;
         }
 
         p {
@@ -62,19 +65,19 @@
     </style>
 </head>
 <body>
-<header>
-    <h1>Medicine List</h1>
-</header>
     <nav>
-        <a href="home" class="active">Home</a>
+        <a href="./" class="active">Home</a>
         <a href="medicines">Medicines</a>
         <a href="cart">Cart</a>
-        <a href="logout">Logout</a>
+        <a href="feedback">Feedback</a>
+        <div style="float: right; padding: 0px 16px;">
+            <a href="logout">Logout</a>
+        </div>
         <div style="float: right; padding: 14px 16px;">
             Welcome, <span id="username"><?php echo $_SESSION['username'];?></span>
         </div>
     </nav>
-    <?php 
+    <?php
     echo '<div class="medicine-container">';
     while ($row = $result->fetch_assoc()) {
         $id = $row['id'];
@@ -82,8 +85,8 @@
         $price = $row['price'];
         $quantity = $row['quantity'];
         $image = $row['file_path'];
-        echo '<div class="medicine-box" onclick="showDetails(' . $id . ')">';
-        echo '<img src="'. $image .'" alt="Medicine Image" style="max-width: 100%; height: auto;">';
+        echo '<div class="medicine-box">';
+        echo '<img src="'. $image .'" alt="Medicine Image" onclick="showDetails(' . $id . ')" style="max-width: 100%; height: auto;">';
         echo '<h3>' . $name . '</h3>';
         echo '<p>Price: $' . number_format($price, 2) . '</p>';
         echo '<p>Quantity: ' . $quantity . '</p>';

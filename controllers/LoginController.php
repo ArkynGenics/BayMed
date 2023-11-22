@@ -2,9 +2,19 @@
 
 class LoginController {
     public static function index() {
-        include_once 'views/login.php';
+        session_start();
+        include_once 'function/captcha.php';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            self::login();
+            if(validateCaptcha($_POST['captcha'])){
+                self::login();
+            }else {
+                $_SESSION['error_message'] = 'Captcha Failed';
+                header('Location: login');
+                exit;
+            }
+        }else{
+            $image_data = generateCaptcha();
+            include_once 'views/login.php';
         }
     }
 
@@ -21,7 +31,7 @@ class LoginController {
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['privilege'] = $user['privilege'];
                 $_SESSION['success_message'] = 'Login success';
-                header('Location: home');
+                header('Location: ./');
                 exit;
             } else {
                 $_SESSION['error_message'] = 'Login failed';

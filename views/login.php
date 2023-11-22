@@ -1,7 +1,6 @@
 <?php 
-    session_start();
     if(isset($_SESSION['user_id'])){
-        header("Location: home");
+        header("Location: ./");
     }
 ?>
 <!DOCTYPE html>
@@ -31,7 +30,7 @@
         .login-container h2 {
             text-align: center;
             margin-bottom: 24px;
-            color: #5cb85c;
+            color: #4cc9b0;
         }
 
         .login-container input {
@@ -39,34 +38,47 @@
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 4px;
-            border: 1px solid #ddd;
+            border: 1px solid #4cc9b0;
             box-sizing: border-box;
         }
-
+        
         .login-container button {
             width: 100%;
             padding: 10px;
             border: none;
             border-radius: 4px;
             color: white;
-            background-color: #5cb85c;
+            background-color: #4cc9b0;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
         .login-container button:hover {
-            background-color: #449d44;
+            background-color: #3db59d;
+        }
+        .register-button{
+            cursor: pointer;
+            margin-top: 10px;
+            text-align: center;
+            color: #4cc9b0;
+            font-size: 13px
+        }
+        .register-button:hover{
+            color: lightblue;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>BAYMED LOGIN PAGE</h2>
+        <h2>Login</h2>
         <form action="#" method="POST">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
+            <img src="data:image/png;base64,<?php echo $image_data?>" alt="Image CAPTCHA">
+            <input type="text" name="captcha" placeholder="captcha" required>
             <button type="submit">Login</button>
         </form>
+        <div class="register-button" onclick="window.location.href='register'"><b>Belum punya akun? Regiskuy!</b></div>
         <p style="color: red;"><?php if(isset($_SESSION['error_message'])){ echo $_SESSION['error_message'];unset($_SESSION['error_message']);}?></p>
     </div>
 </body>

@@ -15,7 +15,7 @@ switch ($path) {
         include_once 'controllers/RegistrationController.php'; 
         RegisterController::index();
         break;
-    case $basePath . '/home':
+    case $basePath . '/':
         include_once 'controllers/HomeController.php'; 
         HomeController::index();
         break;

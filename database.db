@@ -35,25 +35,16 @@ CREATE TABLE feedbacks (
     user_feedback TEXT NOT NULl,
     file_path VARCHAR(255)
 );
-
-
-INSERT INTO medicines (name, price, description, quantity, file_path)
-VALUES
-    ('Aspirin', 5.99, 'Pain reliever and fever reducer', 100, 'storage/image/aspirin.png'),
-    ('Amoxicillin', 12.50, 'Antibiotic for bacterial infections', 50, 'storage/image/amoxicillin.png'),
-    ('Lipitor', 25.75, 'Cholesterol-lowering medication', 75, 'storage/image/lipitor.png'),
-    ('Ibuprofen', 8.49, 'Nonsteroidal anti-inflammatory drug', 120, 'storage/image/ibuprofen.png'),
-    ('Ciprofloxacin', 18.30, 'Broad-spectrum antibiotic', 60, 'storage/image/ciprofloxacin.png'),
-    ('Paracetamol', 6.99, 'Pain reliever and fever reducer', 80, 'storage/image/paracetamol.png'),
-    ('Levothyroxine', 9.25, 'Thyroid hormone replacement', 40, 'storage/image/levothyroxine.png'),
-    ('Metformin', 7.75, 'Anti-diabetic medication', 90, 'storage/image/metformin.png'),
-    ('Omeprazole', 15.49, 'Proton pump inhibitor for heartburn', 110, 'storage/image/omeprazole.png'),
-    ('Prednisone', 10.30, 'Corticosteroid for inflammation', 70, 'storage/image/prednisone.png'),
-    ('Simvastatin', 22.99, 'Cholesterol-lowering medication', 30, 'storage/image/simvastatin.png'),
-    ('Warfarin', 5.75, 'Anticoagulant blood thinner', 85, 'storage/image/warfarin.png');
-
 INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 1, 3);
 INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 2, 2);
 INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 3, 1);
 INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 4, 4);
-INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 5, 2);
+INSERT INTO carts (user_id, medicine_id, quantity) VALUES (1, 5, 2);`
+
+INSERT INTO medicines (name, price, description, quantity)
+VALUES
+    ('Aspirin', 5.99, 'Pain reliever and fever reducer', 100),
+    ('Amoxicillin', 12.50, 'Antibiotic for bacterial infections', 50),
+    ('Lipitor', 25.75, 'Cholesterol-lowering medication', 75),
+    ('Ibuprofen', 8.49, 'Nonsteroidal anti-inflammatory drug', 120),
+    ('Ciprofloxacin', 18.30, 'Broad-spectrum antibiotic', 60);

@@ -16,10 +16,19 @@ class RegisterController {
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $usernamePattern = '/^[a-zA-Z0-9_-]{3,16}$/';
+        $emailPattern = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+        if (!preg_match($usernamePattern, $username)) {
+            $_SESSION["error_message"] = "Username Format is not allowed";
+            header("Location: register");
+        }
+        if (!preg_match($emailPattern, $email)) {
+            $_SESSION["error_message"] = "Email Format is Incorrect";
+            header("Location: register");
+        }
         $success = $authModel->register($username,$email,$password);
         if ($success) {
-            $_SESSION["success_message"] = "User Registered Successfully";
-            header("Location: home");
+            header("Location: ./");
         } else {
             $_SESSION["error_message"] = "Failed to Register User";
             header("Location: register");

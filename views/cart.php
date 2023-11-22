@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="assets/css/navbar.css">
     <title>Shopping Cart</title>
     <style>
-        
+        h2 {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            margin-top: 60px;
+            margin-left: 150px;
+        }
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -22,7 +27,7 @@
         }
 
         .container {
-            margin: 20px;
+            margin: 0 150px 0 150px;
         }
 
         table {
@@ -31,37 +36,79 @@
             margin-top: 20px;
         }
 
-        th, td {
+        td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
+            
         }
 
         th {
-            background-color: #333;
-            color: #fff;
+            background-color: #4CC9B0;
+            color: #000;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
         }
 
         .total {
-            margin-top: 20px;
+        margin-top: 100px;
+        background-color: #4CC9B0;
+        padding: 5px 5px 5px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        }
+
+        .checkout_button {
+            background-color: red;
+            color: #000;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: 10px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        .idid{
+            text-align: center;
+        }
+        .qty{
+            text-align: center;
+        }
+        .price{
+            text-align: center;
+        }
+        .price-total{
             text-align: right;
+        }
+        .delete-item{
+            border: none;    
+        }
+        .delete-item a {
+            text-decoration: none;
+            color: red;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Shopping Cart</h1>
-</header>
 <nav>
-    <a href="home" class="active">Home</a>
+    <a href="./" class="active">Home</a>
     <a href="medicines">Medicines</a>
     <a href="cart">Cart</a>
-    <a href="logout">Logout</a>
+    <a href="feedback">Feedback</a>
+    <div style="float: right; padding: 0px 16px;">
+        <a href="logout">Logout</a>
+    </div>
     <div style="float: right; padding: 14px 16px;">
         Welcome, <span id="username"><?php echo $_SESSION['username'];?></span>
     </div>
 </nav>
+
+<h2>My Cart</h2>
+
 <div class="container">
     <table>
         <thead>
@@ -86,8 +133,13 @@
             idInput.type = "hidden";
             idInput.name = "id"; 
             idInput.value = id;
+            var csrfToken = document.createElement("input");
+            csrfToken.type = "hidden";
+            csrfToken.name = "csrf_token"; 
+            csrfToken.value = "<?php echo $_SESSION['csrf_token'];?>";
             form.appendChild(actionInput);
             form.appendChild(idInput);
+            form.appendChild(csrfToken);
             document.body.appendChild(form);
             form.submit();
         }
@@ -99,12 +151,12 @@
             while ($row = $result->fetch_assoc()) {
                 $rowNumber++;
                 echo '<tr>';
-                echo '<td>' . $rowNumber. '</td>';
+                echo '<td  class="idid">' . $rowNumber. '</td>';
                 echo '<td>' . $row['medicine_name'] . '</td>';
-                echo '<td>$' . number_format($row['medicine_price'], 2) . '</td>';
-                echo '<td>' . $row['quantity'] . '</td>';
-                echo '<td>$' . number_format($row['total_price'], 2) . '</td>';
-                echo '<td><a href="#" onclick="deleteForm('. $row['cart_id'].');">Delete</a></td>';
+                echo '<td class="price">$' . number_format($row['medicine_price'], 2) . '</td>';
+                echo '<td class="qty">' . $row['quantity'] . '</td>';
+                echo '<td class="price-total">$' . number_format($row['total_price'], 2) . '</td>';
+                echo '<td class="delete-item"><a href="#" onclick="deleteForm('. $row['cart_id'].');">X</a></td>';
                 echo '</tr>';
                 $cartPrice += $row['total_price'];
             }
@@ -114,11 +166,13 @@
     </table>
 
     <div class="total">
-        <p><strong>Total:</strong>$<?php echo number_format($cartPrice, 2)?> </p>
+        <h4>Total : <strong>$<?php echo number_format($cartPrice, 2)?></strong> </h4>
+        <button class="checkout_button" onclick="#">Check Out</button>
     </div>
+
+    <p style="color: green;"><?php if(isset($_SESSION['success_message'])){echo $_SESSION['success_message'];unset($_SESSION['success_message']);}?></p>
+    <p style="color: red;"><?php if(isset($_SESSION['error_message'])){echo $_SESSION['error_message']; unset($_SESSION['error_message']);}?></p>
 </div>
-<p style="color: green;"><?php if(isset($_SESSION['success_message'])){echo $_SESSION['success_message'];unset($_SESSION['success_message']);}?></p>
-<p style="color: red;"><?php if(isset($_SESSION['error_message'])){echo $_SESSION['error_message']; unset($_SESSION['error_message']);}?></p>
 
 </body>
 </html>
