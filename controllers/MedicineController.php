@@ -26,6 +26,11 @@ class MedicineController {
                     $cartModel = new CartModel($conn);
                     $medicineId = $_POST['medicine_id'];
                     $quantity = $_POST['quantity'];
+                    if($quantity < 1){
+                        $_SESSION['error_message'] = "Value cannot be less than 1";
+                        header('Location:medicine?id='. $medicineId);
+                        exit();
+                    }
                     $success = $cartModel->addToCart($medicineId, $_SESSION['user_id'], $quantity);
                     if($success){
                         $_SESSION['success_message'] = "Added to Cart Successfully";
