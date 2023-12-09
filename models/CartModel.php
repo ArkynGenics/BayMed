@@ -45,9 +45,9 @@ class CartModel {
                 $stmt1 = $this->conn->prepare("INSERT INTO carts (medicine_id, user_id, quantity) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE quantity = quantity + ?");
                 $stmt1->bind_param('iiii', $id, $user_id,$quantity,$quantity);
                 $stmt1->execute();
-                $stmt2 = $this->conn->prepare("UPDATE medicines SET quantity = quantity - ? WHERE id = ?");
-                $stmt2->bind_param('ii', $quantity,$id);
-                $stmt2->execute();
+                // $stmt2 = $this->conn->prepare("UPDATE medicines SET quantity = quantity - ? WHERE id = ?");
+                // $stmt2->bind_param('ii', $quantity,$id);
+                // $stmt2->execute();
                 $this->conn->commit();
                 $this->conn->autocommit(true);
                 return true;
@@ -84,6 +84,32 @@ class CartModel {
             return false;
         }
     }
+    public function deleteUserCart($id) {
+        try{
+            $sql = "SELECT * from carts where user_id = ?;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $statement = $stmt->get_result();
+            $this->conn->autocommit(false);
+            $stmt1 = $this->conn->prepare("DELETE FROM carts where user_id = ?");
+            $stmt1->bind_param('i', $id);
+            $stmt1->execute();
+            while($row = $statement->fetch_assoc()){
+                $stmt2 = $this->conn->prepare("UPDATE medicines SET quantity = quantity - ? WHERE id = ?");
+                $stmt2->bind_param('ii', $row['quantity'],$row['medicine_id']);
+                $stmt2->execute();
+            }
+            $this->conn->commit();
+            $this->conn->autocommit(true);
+            return true;
+        } catch (PDOException $e) {
+            $this->conn->rollback();
+            $this->conn->autocommit(true);
+            return false;
+        }
+    }
 }
+
 
 ?>

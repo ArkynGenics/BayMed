@@ -16,6 +16,9 @@ class RegisterController {
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $full_name = $_POST['full_name'];
+        $gender = $_POST['gender'];
+        $address = $_POST['address'];
         $usernamePattern = '/^[a-zA-Z0-9_-]{3,16}$/';
         $emailPattern = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
         if (!preg_match($usernamePattern, $username)) {
@@ -26,7 +29,7 @@ class RegisterController {
             $_SESSION["error_message"] = "Email Format is Incorrect";
             header("Location: register");
         }
-        $success = $authModel->register($username,$email,$password);
+        $success = $authModel->register($username,$email,$password,$full_name,$address,$gender);
         if ($success) {
             header("Location: ./");
         } else {

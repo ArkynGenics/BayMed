@@ -3,13 +3,18 @@
 class MedicineController {
     public static function viewAll() {
         session_start();
+        include "config/connection.php";
+        include "models/MedicineModel.php";
         if(!isset($_SESSION['user_id'])){
             header("Location: login");
         }
-        include "config/connection.php";
-        include "models/MedicineModel.php";
         $medicineModel = new MedicineModel($conn);
-        $result = $medicineModel->listMedicine();
+        if(isset($_GET['search'])){
+            $result = $medicineModel->searchMedicine($_GET['search']);
+        }
+        else{
+            $result = $medicineModel->listMedicine();
+        }
         include_once 'views/medicines.php';
     }
     public static function viewMedicine() {

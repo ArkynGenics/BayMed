@@ -38,6 +38,10 @@ switch ($path) {
     case $basePath . '/feedback':
         include_once 'controllers/FeedbackController.php'; 
         FeedbackController::index();
+        break; 
+    case $basePath . '/checkout':
+        include_once 'controllers/CheckoutController.php'; 
+        CheckoutController::index();
         break;                
     default:
         // Handle 404

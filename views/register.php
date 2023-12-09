@@ -68,6 +68,14 @@
         .register-button:hover{
             color: lightblue;
         }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #4cc9b0;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -76,6 +84,13 @@
         <form action="#" method="POST">
             <input type="text" name="username" placeholder="Username" required>
             <input type="text" name="email" placeholder="Email" required>
+            <input type="text" name="full_name" placeholder="Fullname" required>
+            <input type="text" rows="5" cols="30" style="width:300px; height:150px;" name="address" placeholder="Address" required>
+            <select name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Register</button>
         </form>

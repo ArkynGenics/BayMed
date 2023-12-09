@@ -13,10 +13,10 @@
         $user = $result->fetch_assoc();
         return $user;
     }
-    public function register($username,$email,$password){
+    public function register($username,$email,$password,$full_name,$address,$gender){
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $this->conn->prepare('INSERT INTO users (username,email,password) values (?,?,?)');
-        $stmt->bind_param('sss',$username,$email,$hashed_password);
+        $stmt = $this->conn->prepare('INSERT INTO users (username,email,password,full_name,address,gender) values (?,?,?,?,?,?)');
+        $stmt->bind_param('sssssi',$username,$email,$hashed_password,$full_name,$address,$gender);
         $success = $stmt->execute();
         return $success;
     }

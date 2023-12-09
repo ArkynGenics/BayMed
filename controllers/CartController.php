@@ -37,6 +37,7 @@ class CartController {
             generateCSRFToken();
             $cartModel = new CartModel($conn);
             $result = $cartModel->listCart($_SESSION['user_id']);
+            $checkoutList = $cartModel->listCart($_SESSION['user_id']);
             include_once 'views/cart.php';
         }
     }

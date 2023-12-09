@@ -92,13 +92,13 @@
             <a href="logout">Logout</a>
         </div>
         <div style="float: right; padding: 14px 16px;">
-            Welcome, <span id="username"><?php echo $_SESSION['username'];?></span>
+            Welcome, <span id="username"><?php echo $_SESSION['full_name'];?></span>
         </div>
     </nav>
     <div class="container">
-        <h2 class="title">User Feedback Form</h2>
+        <h2 class="title">Feedback pengalaman pengguna</h2>
         <form action="#" method="post" enctype="multipart/form-data">
-            <label for="fullname" style=font-size:14px;>Your Name:</label>
+            <label for="fullname" style=font-size:14px;>Nama:</label>
             <input type="text" id="fullname" name="fullname" required>
             <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']?>"/>
             <label for="feedback" style=font-size:14px;>Feedback:</label>
@@ -113,7 +113,7 @@
         <p style="color: green;"><?php if(isset($_SESSION['success_message'])){echo $_SESSION['success_message'];unset($_SESSION['success_message']);}?></p>
         <p style="color: red;"><?php if(isset($_SESSION['error_message'])){echo $_SESSION['error_message']; unset($_SESSION['error_message']);}?></p>
         
-        <h3 class="title" style=margin-top:100px;>Feedback List</h3>
+        <h3 class="title" style=margin-top:100px;>Feedback History</h3>
         <div class="feedback-list">
             <?php
             foreach ($feedbacks as $feedback) {

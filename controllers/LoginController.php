@@ -29,6 +29,7 @@ class LoginController {
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
+                $_SESSION['full_name'] = $user['full_name'];
                 $_SESSION['privilege'] = $user['privilege'];
                 $_SESSION['success_message'] = 'Login success';
                 header('Location: ./');

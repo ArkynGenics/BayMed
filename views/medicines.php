@@ -62,6 +62,26 @@
             margin: 5px 0;
             color: #333;
         }
+        .search-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .search-box {
+            padding: 10px;
+            width: 65%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .search-button {
+            padding: 10px;
+            background-color: #4CC9B0;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -74,9 +94,13 @@
             <a href="logout">Logout</a>
         </div>
         <div style="float: right; padding: 14px 16px;">
-            Welcome, <span id="username"><?php echo $_SESSION['username'];?></span>
+            Welcome, <span id="username"><?php echo $_SESSION['full_name'];?></span>
         </div>
     </nav>
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-box" placeholder="Cari obat..">
+        <button onclick="searchMedicine()" class="search-button">Search</button>
+    </div>
     <?php
     echo '<div class="medicine-container">';
     while ($row = $result->fetch_assoc()) {
@@ -88,7 +112,7 @@
         echo '<div class="medicine-box">';
         echo '<img src="'. $image .'" alt="Medicine Image" onclick="showDetails(' . $id . ')" style="max-width: 100%; height: auto;">';
         echo '<h3>' . $name . '</h3>';
-        echo '<p>Price: $' . number_format($price, 2) . '</p>';
+        echo '<p>Harga: Rp.' . number_format($price, 2) . '</p>';
         echo '<p>Quantity: ' . $quantity . '</p>';
         echo '</div>';
     }
@@ -96,8 +120,20 @@
 
     ?>
     <script>
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("keypress", function (event) {
+        if (event.keyCode == 13) {
+            searchMedicine()
+        }
+        });
         function showDetails(id) {
             window.location.href = `medicine?id=${id}`
+        }
+        function searchMedicine() {
+            const searchInput = document.getElementById("searchInput");
+            if(searchInput.value !== ""){
+                window.location.href = `medicines?search=${searchInput.value}`
+            }
         }
     </script>
 </body>

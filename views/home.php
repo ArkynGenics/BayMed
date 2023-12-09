@@ -51,7 +51,7 @@
         <a href="logout">Logout</a>
     </div>
     <div style="float: right; padding: 14px 16px;">
-        Welcome, <span id="username"><?php echo $_SESSION['username'];?></span>
+        Welcome, <span id="username"><?php echo $_SESSION['full_name'];?></span>
     </div>
 </nav>
 
