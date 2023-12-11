@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS baymed;
+use baymed;
 CREATE TABLE `users` (
   id int(11) NOT NULL AUTO_INCREMENT,
   username varchar(255) NOT NULL,
@@ -8,15 +10,6 @@ CREATE TABLE `users` (
   password varchar(64) NOT NULL,
   privilege varchar(30) NOT NULL,
   PRIMARY KEY(id)
-);
-
-CREATE TABLE medicines (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    description TEXT,
-    quantity INT NOT NULL,
-    file_path VARCHAR(255)
 );
 
 CREATE TABLE `medicines` (

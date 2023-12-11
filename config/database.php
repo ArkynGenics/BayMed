@@ -1,8 +1,8 @@
 <?php
     $config = [
-        'server' => 'localhost',
-        'username' => 'root',
-        'password' => '',
+        'server' => '127.0.0.1',
+        'username' => 'baymed',
+        'password' => 'B@yM3d123',
         'database' => 'baymed',
     ];
 ?>

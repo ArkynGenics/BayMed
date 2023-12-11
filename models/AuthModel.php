@@ -15,8 +15,8 @@
     }
     public function register($username,$email,$password,$full_name,$address,$gender){
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $this->conn->prepare('INSERT INTO users (username,email,password,full_name,address,gender) values (?,?,?,?,?,?)');
-        $stmt->bind_param('sssssi',$username,$email,$hashed_password,$full_name,$address,$gender);
+        $stmt = $this->conn->prepare('INSERT INTO users (username,email,password,full_name,address,gender,privilege) values (?,?,?,?,?,?,?)');
+        $stmt->bind_param('ssssisi',$username,$email,$hashed_password,$full_name,$address,$gender,"Customer");
         $success = $stmt->execute();
         return $success;
     }
