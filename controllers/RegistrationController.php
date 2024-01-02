@@ -21,10 +21,18 @@ class RegisterController {
         if (!preg_match($usernamePattern, $username)) {
             $_SESSION["error_message"] = "Username Format is not allowed";
             header("Location: register");
+            exit();
         }
         if (!preg_match($emailPattern, $email)) {
             $_SESSION["error_message"] = "Email Format is Incorrect";
             header("Location: register");
+            exit();
+        }
+        $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
+        if (!preg_match($passwordPattern, $password)) {
+            $_SESSION["error_message"] = "Password Format is not allowed";
+            header("Location: register");
+            exit();
         }
         $success = $authModel->register($username,$email,$password);
         if ($success) {
