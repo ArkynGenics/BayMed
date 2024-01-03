@@ -1,6 +1,6 @@
 #!/bin/bash
 service apache2 start
-mysqld
+service mariadb start
 #tail ini just in case docker container
 #keluar setelah menjalankan main process
 #untuk mencegahny

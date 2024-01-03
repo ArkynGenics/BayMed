@@ -1,6 +1,6 @@
 <?php
 
-$basePath = '';
+$basePath = '/BayMed';
 $requestUri = $_SERVER['REQUEST_URI'];
 $uriComponents = parse_url($requestUri);
 $path = $uriComponents['path'];
